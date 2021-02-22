@@ -23,7 +23,7 @@ const fireEvent = (e) => {
 };
 </script>
 
-<style>
+<style lang="scss">
 #app {
   padding: 2rem;
   font-family: --apple-system, sans-serif;
@@ -34,5 +34,12 @@ const fireEvent = (e) => {
   height: 100%;
   outline: none;
   box-sizing: border-box;
+  font-size: 1.5rem;
+  display: flex;
+  flex-direction: column;
+
+  div:not(:first-child) {
+    margin-top: 1rem;
+  }
 }
 </style>
