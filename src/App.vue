@@ -1,8 +1,11 @@
 <template>
   <div id="app" tabindex="0" ref="main" @keydown="fireEvent">
-    <div>Key: {{ event.key }}</div>
-    <div>Code: {{ event.code }}</div>
-    <div>KeyCode: {{ event.keyCode }}</div>
+    <div v-if="Object.values(event).every((value) => value === undefined)">
+      Oops, no event fired so far ¯\_(ツ)_/¯
+    </div>
+    <div v-if="event.key">Key: {{ event.key }}</div>
+    <div v-if="event.code">Code: {{ event.code }}</div>
+    <div v-if="event.keyCode">KeyCode: {{ event.keyCode }}</div>
   </div>
 </template>
 
