@@ -2,8 +2,12 @@
 
 Shows key, code and keycode when a key pressed.
 
+Built with Vue script setup and Vite.
 
-Played with <script setup /> and Vite a little.
+## Development
+
+Execute ```yarn``` to install depedencies.
+Execute ```yarn dev``` to run Vite development server.
 
 ## LICENSE
 
