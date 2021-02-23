@@ -3,7 +3,8 @@
     <div class="container">
       <div class="page-title">Event Watcher</div>
       <div v-if="Object.values(event).every((value) => value === undefined)">
-        Oops, no event fired so far ¯\_(ツ)_/¯
+        Oops, no event fired so far ¯\_(ツ)_/¯ <br />Press a button to fire a
+        event
       </div>
 
       <Box v-if="event.key" title="Key" :text="event.key" />
