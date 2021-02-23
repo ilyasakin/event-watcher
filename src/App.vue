@@ -1,16 +1,21 @@
 <template>
   <div id="app" tabindex="0" ref="main" @keydown="fireEvent">
-    <div v-if="Object.values(event).every((value) => value === undefined)">
-      Oops, no event fired so far ¯\_(ツ)_/¯
+    <div class="container">
+      <div class="page-title">Event Watcher</div>
+      <div v-if="Object.values(event).every((value) => value === undefined)">
+        Oops, no event fired so far ¯\_(ツ)_/¯
+      </div>
+
+      <Box v-if="event.key" title="Key" :text="event.key" />
+      <Box v-if="event.code" title="Code" :text="event.code" />
+      <Box v-if="event.keyCode" title="Key Code" :text="event.keyCode" />
     </div>
-    <div v-if="event.key">Key: {{ event.key }}</div>
-    <div v-if="event.code">Code: {{ event.code }}</div>
-    <div v-if="event.keyCode">KeyCode: {{ event.keyCode }}</div>
   </div>
 </template>
 
 <script setup>
 import { ref, onMounted, reactive } from 'vue';
+import Box from './components/Box.vue';
 const event = reactive({ key: undefined, code: undefined, keyCode: undefined });
 
 const main = ref(null);
@@ -22,7 +27,7 @@ onMounted(() => {
 const fireEvent = (e) => {
   event.key = e.key;
   event.code = e.code;
-  event.keyCode = e.keyCode;
+  event.keyCode = e.keyCode.toString();
 };
 </script>
 
@@ -38,11 +43,23 @@ const fireEvent = (e) => {
   outline: none;
   box-sizing: border-box;
   font-size: 1.5rem;
+}
+
+.container {
   display: flex;
   flex-direction: column;
+  min-width: 480px;
+  max-width: 480px;
+
+  margin: 0 auto;
 
   div:not(:first-child) {
     margin-top: 1rem;
   }
+}
+
+.page-title {
+  font-size: 1.75rem;
+  font-weight: 700;
 }
 </style>
